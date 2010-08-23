@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, CountUpActivity!</string>
+    <string name="app_name">CountUp</string>
+<string name="count">0</string>
+<string name="button1">CountUp!</string>
+</resources>
