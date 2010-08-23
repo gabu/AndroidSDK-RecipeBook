@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+>
+<TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/track"
+/>
+<TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/artist"
+/>
+<TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/album"
+/>
+<TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/playing"
+/>
+<LinearLayout
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Prev"
+  android:onClick="onPrevButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Stop"
+  android:onClick="onStopButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Pause"
+  android:onClick="onPauseButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Play"
+  android:onClick="onPlayButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Next"
+  android:onClick="onNextButton"
+/>
+</LinearLayout>
+</LinearLayout>

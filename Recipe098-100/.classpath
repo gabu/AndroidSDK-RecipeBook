@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-android-xml.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-apache.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-auth-oauth.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-auth.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-escape.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-googleapis-auth-clientlogin.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-googleapis-auth-oauth.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-googleapis-auth.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-googleapis-json.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-googleapis-xml-atom.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-googleapis.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-http.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-json.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-util.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-xml-atom.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-client-xml.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-data-docs-v3-atom.jar"/>
+	<classpathentry kind="lib" path="lib/gdata-2.2.1-alpha-data-docs-v3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

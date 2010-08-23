@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+>
+<LinearLayout
+   android:orientation="vertical"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+>
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Browser"
+    android:onClick="onBrowserButton"
+    />
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Search"
+    android:onClick="onSearchButton"
+    />
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Dialer"
+    android:onClick="onDialerButton"
+    />
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Call"
+    android:onClick="onCallButton"
+    />
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="SimpleCamera"
+    android:onClick="onSimpleCameraButton"
+    />
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="LargeCamera"
+    android:onClick="onLargeCameraButton"
+    />
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/image"
+/>
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Video"
+    android:onClick="onVideoButton"
+    />
+<VideoView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/VideoView01"
+/>
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Recorder"
+    android:onClick="onRecorderButton"
+    />
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Recognize"
+    android:onClick="onRecognizeButton"
+    />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/text"
+/>
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="App"
+    android:onClick="onAppButton"
+    />
+</LinearLayout></ScrollView></LinearLayout>

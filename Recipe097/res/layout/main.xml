@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:recipe=
+    "http://schemas.android.com/apk/res/net.gabuchan.android.recipe097"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+>
+<com.admob.android.ads.AdView
+  android:id="@+id/ad"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  recipe:backgroundColor="#000000"
+  recipe:textColor="#FFFFFF"
+  recipe:keywords="Android application"
+/>
+<TextView
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:text="@string/hello"
+/>
+</LinearLayout>

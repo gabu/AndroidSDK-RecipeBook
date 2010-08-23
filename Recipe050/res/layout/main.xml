@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  >
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Alpha"
+  android:onClick="startAlpha"
+  />
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Rotate"
+  android:onClick="startRotate"
+  />
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Scale"
+  android:onClick="startScale"
+  />
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Mix"
+  android:onClick="startMix"
+  />
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Translate"
+  android:onClick="onClick"
+  />
+</LinearLayout>
+<TextView
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Interpolator for Translate"
+/>
+<Spinner
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/spinner"
+  />
+<ImageView
+    android:layout_width="100dip"
+    android:layout_height="100dip"
+    android:id="@+id/image"
+    />
+</LinearLayout>

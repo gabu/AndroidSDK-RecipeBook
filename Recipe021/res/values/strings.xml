@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="hello">Hello World, Recipe021!</string>
+  <string name="app_name">Recipe021</string>
+  <string name="category1">カテゴリの名前</string>
+  <string name="checkbox_title">チェックボックス</string>
+  <string name="checkbox_summary">チェックボックスサマリー</string>
+  <string name="edittext_title">テキスト</string>
+  <string name="edittext_summary">テキストサマリー</string>
+  <string name="edittext_dialog_title">テキストダイアログ</string>
+  <string name="list_title">リストタイトル</string>
+  <string name="list_summary">リストサマリー</string>
+  <string name="list_dialog_title">リストダイアログ</string>
+  <string name="ringtone_title">リングトーンタイトル</string>
+  <string name="ringtone_summary">リングトーンサマリー</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">MyWidget</string>
+  <string name="button_label">更新</string>
+  <string name="widget_init">Click me!</string>
+</resources>

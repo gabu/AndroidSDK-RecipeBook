@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Start"
+  android:onClick="onStartButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Pause"
+  android:onClick="onPauseButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Stop"
+  android:onClick="onStopButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Untan!"
+  android:onClick="onUntanButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="High Untan!"
+  android:onClick="onUntanHighButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Low Untan!"
+  android:onClick="onUntanLowButton"
+/>
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+>
+<SurfaceView
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:id="@+id/camera_view"
+/>
+<LinearLayout
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Start"
+  android:onClick="onStartButton"
+/>
+<Button
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Stop"
+  android:onClick="onStopButton"
+/>
+</LinearLayout>
+</FrameLayout>

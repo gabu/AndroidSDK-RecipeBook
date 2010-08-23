@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="@string/category1">
+     <CheckBoxPreference
+         android:key="checkbox_key"
+         android:title="@string/checkbox_title"
+         android:summary="@string/checkbox_summary"
+         android:defaultValue="true" />
+     <EditTextPreference
+         android:key="edittext_key"
+         android:title="@string/edittext_title"
+         android:summary="@string/edittext_summary"
+         android:dialogTitle="@string/edittext_dialog_title"
+         android:defaultValue="Hello!" />
+     <ListPreference
+         android:key="list_key"
+         android:title="@string/list_title"
+         android:summary="@string/list_summary"
+         android:dialogTitle="@string/list_dialog_title"
+         android:entries="@array/list_entries"
+         android:entryValues="@array/list_entryvalues"
+         android:defaultValue="third" />
+     <RingtonePreference
+         android:key="ringtone_key"
+         android:title="@string/ringtone_title"
+         android:summary="@string/ringtone_summary" />
+    </PreferenceCategory>
+</PreferenceScreen>
