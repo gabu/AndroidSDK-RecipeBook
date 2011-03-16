@@ -16,18 +16,19 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.api.client.apache.ApacheHttpTransport;
+import com.google.api.client.googleapis.GoogleHeaders;
 import com.google.api.client.googleapis.GoogleTransport;
 import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.xml.atom.AtomParser;
-import com.google.api.data.calendar.v2.GoogleCalendar;
-import com.google.api.data.calendar.v2.atom.GoogleCalendarAtom;
 
 public class Recipe101 extends Activity {
-
+    private static final String GOOGLE_CAL_API_URL = "https://www.google.com/calendar/feeds/";
+    private static final String CAL_AUTH_TOKEN_TYPE = "cl";
     private static final String TAG = "Recipe101";
-    private static GoogleTransport mTransport;
+    private static HttpTransport mTransport;
     private String mAuthToken;
 
     @Override
@@ -35,17 +36,17 @@ public class Recipe101 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        mTransport = new GoogleTransport();
+        mTransport = GoogleTransport.create();
+        GoogleHeaders headers = (GoogleHeaders) mTransport.defaultHeaders;
         // "[company-id]-[app-name]-[app-version]"という形式で
         // アプリケーション名をセット
-        mTransport.applicationName = "gabu-recipe-101";
+        headers.setApplicationName("gabu-recipe-101");
         // バージョンをセット
-        mTransport.setVersionHeader(GoogleCalendar.VERSION);
+        headers.gdataVersion = "2";
         // AtomParserを作る
         AtomParser parser = new AtomParser();
-        // ネームスペースにGoogleCalendarのネームスペースをセット
-        parser.namespaceDictionary =
-            GoogleCalendarAtom.NAMESPACE_DICTIONARY;
+        // GoogleCalendarのネームスペースをセット
+        parser.namespaceDictionary = Namespace.DICTIONARY;
         // GoogleTransportにAtomParserをセット
         mTransport.addParser(parser);
 
@@ -63,7 +64,7 @@ public class Recipe101 extends Activity {
         // 認証のためのauth tokenを取得
         AccountManagerFuture<Bundle> f =
             manager.getAuthToken(acount,
-                                 GoogleCalendar.AUTH_TOKEN_TYPE,
+                                 CAL_AUTH_TOKEN_TYPE,
                                  null, this, null, null);
 
         try {
@@ -80,15 +81,15 @@ public class Recipe101 extends Activity {
 
         // GoogleTransportにauth tokenをセット
         // これで認証ヘッダを自動的に付けてくれます。
-        mTransport.setClientLoginToken(mAuthToken);
+        ((GoogleHeaders) mTransport.defaultHeaders).setGoogleLogin(mAuthToken);
         // GoogleTransportからGETリクエストを生成
         HttpRequest request = mTransport.buildGetRequest();
 
         // Googleカレンダーの一覧を取得するURLを作成
         // 共有しているカレンダーも含む
-//        String url = GoogleCalendar.ROOT_URL + "default/allcalendars/full";
+//        String url = GOOGLE_CAL_API_URL + "default/allcalendars/full";
         // 自分がオーナーのカレンダーのみ
-        String url = GoogleCalendar.ROOT_URL + "default/owncalendars/full";
+        String url = GOOGLE_CAL_API_URL + "default/owncalendars/full";
 
         // URLをセット
         request.setUrl(url);
@@ -105,16 +106,16 @@ public class Recipe101 extends Activity {
             String userID = entry.getUserID();
 
             // 何も指定せずに予定の一覧を取得
-//            url = GoogleCalendar.ROOT_URL + userID + "/private/full";
-//            debug(request, url);
+            url = GOOGLE_CAL_API_URL + userID + "/private/full";
+            debug(request, url);
 
             // 2010年6月の予定の一覧を取得
-            url = createMonthlyUrl(userID, 2010, 6);
-            debug(request, url);
+//            url = createMonthlyUrl(userID, 2010, 6);
+//            debug(request, url);
 
             // 2010年6月30日の予定の一覧
-            url = createDailyUrl(userID, 2010, 6, 30);
-            debug(request, url);
+//            url = createDailyUrl(userID, 2010, 6, 30);
+//            debug(request, url);
 
         } catch (IOException e) {
             handleException(e);
@@ -162,7 +163,7 @@ public class Recipe101 extends Activity {
     }
 
     private String createUrl(String userID, String from, String to) {
-        return GoogleCalendar.ROOT_URL
+        return GOOGLE_CAL_API_URL
                 + userID + "/private/full"
                 + "?start-min=" + URLEncoder.encode(from)
                 + "&start-max=" + URLEncoder.encode(to)
@@ -176,8 +177,9 @@ public class Recipe101 extends Activity {
         try {
             Log.d(TAG, url);
             request.setUrl(url);
+            HttpResponse response = RedirectHandler.execute(request);
             CalendarEventFeed eventFeed =
-                request.execute().parseAs(CalendarEventFeed.class);
+                response.parseAs(CalendarEventFeed.class);
             for (CalendarEventEntry event : eventFeed.entries) {
                 Log.d(TAG, event.title);
                 if (event.when != null) {
@@ -192,6 +194,7 @@ public class Recipe101 extends Activity {
     private void handleException(IOException e) {
         if (e instanceof HttpResponseException) {
           int statusCode = ((HttpResponseException) e).response.statusCode;
+          System.out.println(statusCode);
           if (statusCode == 401 || statusCode == 403) {
               AccountManager manager = AccountManager.get(this);
               // キャッシュを削除
