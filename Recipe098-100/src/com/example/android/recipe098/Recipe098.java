@@ -18,21 +18,21 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.google.api.client.apache.ApacheHttpTransport;
+import com.google.api.client.googleapis.GoogleHeaders;
 import com.google.api.client.googleapis.GoogleTransport;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.xml.atom.AtomParser;
-import com.google.api.data.docs.v3.GoogleDocumentsList;
-import com.google.api.data.docs.v3.atom.GoogleDocumentsListAtom;
 
 public class Recipe098 extends Activity {
-
+    private static final String GOOGLE_DOCS_API_URL = "https://docs.google.com/feeds/";
+    private static final String DOCS_AUTH_TOKEN_TYPE = "writely";
     private static final String TAG = "Recipe098";
-    private static GoogleTransport mTransport;
+    private static HttpTransport mTransport;
     private String mAuthToken;
 
-    public static GoogleTransport getTransport() {
+    public static HttpTransport getTransport() {
         return mTransport;
     }
 
@@ -42,17 +42,17 @@ public class Recipe098 extends Activity {
         setContentView(R.layout.main);
 
         // GoogleTransportを作る
-        mTransport = new GoogleTransport();
+        mTransport = GoogleTransport.create();
+        GoogleHeaders headers = (GoogleHeaders) mTransport.defaultHeaders;
         // "[company-id]-[app-name]-[app-version]"という形式で
         // アプリケーション名をセット
-        mTransport.applicationName = "gabu-recipe-98";
+        headers.setApplicationName("gabu-recipe-98");
         // バージョンをセット
-        mTransport.setVersionHeader(GoogleDocumentsList.VERSION);
+        headers.gdataVersion = "3";
         // AtomParserを作る
         AtomParser parser = new AtomParser();
-        // ネームスペースにGoogleDocumentsListのネームスペースをセット
-        parser.namespaceDictionary =
-            GoogleDocumentsListAtom.NAMESPACE_DICTIONARY;
+        // GoogleDocumentsListのネームスペースをセット
+        parser.namespaceDictionary = Namespace.DICTIONARY;
         // GoogleTransportにAtomParserをセット
         mTransport.addParser(parser);
 
@@ -70,7 +70,7 @@ public class Recipe098 extends Activity {
         // 認証のためのauth tokenを取得
         AccountManagerFuture<Bundle> f =
             manager.getAuthToken(acount,
-                                 GoogleDocumentsList.AUTH_TOKEN_TYPE,
+                                 DOCS_AUTH_TOKEN_TYPE,
                                  null, this, null, null);
 
         try {
@@ -87,10 +87,10 @@ public class Recipe098 extends Activity {
 
         // GoogleTransportにauth tokenをセット
         // これで認証ヘッダを自動的に付けてくれます。
-        mTransport.setClientLoginToken(mAuthToken);
+        ((GoogleHeaders) mTransport.defaultHeaders).setGoogleLogin(mAuthToken);
 
         // Googleドキュメントの一覧を取得するURLを作成
-        String url = GoogleDocumentsList.ROOT_URL +
+        String url = GOOGLE_DOCS_API_URL +
                         "default/private/full/-/document";
         // GoogleTransportからGETリクエストを生成
         HttpRequest request = mTransport.buildGetRequest();

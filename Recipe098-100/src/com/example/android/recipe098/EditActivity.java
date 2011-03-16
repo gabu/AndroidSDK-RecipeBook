@@ -8,14 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.api.client.googleapis.GoogleTransport;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpResponse;
-import com.google.api.data.docs.v3.GoogleDocumentsList;
+import com.google.api.client.http.HttpTransport;
 
 public class EditActivity extends Activity {
-
-    private static GoogleTransport mTransport;
+    private static final String GOOGLE_DOCS_API_URL = "https://docs.google.com/feeds/";
+    private static HttpTransport mTransport;
     private EditText mEditText;
     private String mDocId;
 
@@ -32,7 +31,7 @@ public class EditActivity extends Activity {
         // GoogleTransportを取得して
         mTransport = Recipe098.getTransport();
         // URLを生成して
-        String url = GoogleDocumentsList.ROOT_URL +
+        String url = GOOGLE_DOCS_API_URL +
               "download/documents/Export?docId=" + mDocId +
               "&exportFormat=txt";
         // GoogleTransportからGETリクエストを生成
@@ -57,7 +56,7 @@ public class EditActivity extends Activity {
         // GoogleTransportからPUTリクエストを生成
         HttpRequest request = mTransport.buildPutRequest();
         // URLを生成して
-        String url = GoogleDocumentsList.ROOT_URL +
+        String url = GOOGLE_DOCS_API_URL +
             "default/media/document%3A" + mDocId;
         // URLをセット
         request.setUrl(url);
